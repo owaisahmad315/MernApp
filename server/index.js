@@ -1,5 +1,5 @@
 import express from "express";
-import BodyParser from "body-parser";
+import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -8,9 +8,11 @@ import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
-import bodyParser from "body-parser";
+import { register } from "./routes/auth.js";
 
-/* Configuration */
+
+
+/* CONFIGURATION */
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -25,7 +27,7 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
-/* File storage */
+/* FILE STORAGE */
 
 const storage = multer.diskStorage({
     destination: function (res, file, cb) {
@@ -37,6 +39,10 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage });
+
+
+/* ROUTES WITH FILES */
+app.post("/auth/register", upload.single("picture"), register);
 
 
 /* MONGOOSE SETUP */
