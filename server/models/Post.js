@@ -28,5 +28,10 @@ const postSchema = mongoose.Schema(
             types: Array,
             defautl: []
         }
-    }
+    },
+    { timestamps: true }
+
 )
+
+const Post = mongoose.model("Post", postSchema);
+export default Post;
