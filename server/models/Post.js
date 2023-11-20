@@ -1,7 +1,5 @@
 import mongoose from "mongoose";
 
-
-
 const postSchema = mongoose.Schema(
     {
         userId: {
@@ -22,16 +20,16 @@ const postSchema = mongoose.Schema(
         userPicturePath: String,
         likes: {
             type: Map,
-            of: boolean
+            of: Boolean,
         },
         comments: {
-            types: Array,
-            defautl: []
-        }
+            type: Array,
+            default: [],
+        },
     },
     { timestamps: true }
-
-)
+);
 
 const Post = mongoose.model("Post", postSchema);
+
 export default Post;
