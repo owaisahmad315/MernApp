@@ -58,26 +58,14 @@ app.use("/posts", postRoutes);
 
 /* MONGOOSE SETUP */
 
-// const PORT = process.env.PORT || 6001;
-// mongoose.connect(process.env.MONGO_URL, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-// }).then(() => {
-//     app.listen(PORT, () => console.log(`Server port: ${PORT}`));
-// }).catch((error) => console.log(`${error} did not connect`));
-
-
-// gpt code for checking
-
-
 const PORT = process.env.PORT || 6001;
-
-// Print MongoDB URI for debugging
-console.log('MongoDB URI:', process.env.MONGO_URL);
-
 mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then(() => {
-    app.listen(PORT, () => console.log(`Server port: ${PORT}`));
-}).catch((error) => console.error(`${error} did not connect`));
+    app.listen(PORT, () => console.log(`now server is running and Server port is: ${PORT}`));
+}).catch((error) => console.log(`${error} did not connect`));
+
+
+
+
