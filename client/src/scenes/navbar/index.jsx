@@ -7,7 +7,7 @@ import {
    Select,
    MenuItem,
    FormControl,
-   UseTheme,
+   useTheme,
    useMediaQuery
 
 } from "@mui/material";
@@ -25,7 +25,7 @@ import { useDispatch,useSelector } from "react-redux";
 import { setMode, setLogout} from "state";
 import { useNavigate } from "react-router-dom";
 import FlexBetween from "components/FlexBetween";
-import { useTheme } from "@emotion/react";
+
 
 
 const Navbar = () => {
@@ -42,7 +42,9 @@ const Navbar = () => {
   const primaryLight = theme.palette.primary.light;
   const alt = theme.palette.background.alt;
 
-  const fullName = `${user.firstName} ${user.lastName}`;
+  //const fullName = `${user.firstName} ${user.lastName}`;
+  const fullName = user !== null ? user.firstName : 'default person';
+
 
 
 
@@ -78,7 +80,7 @@ const Navbar = () => {
 
       {isNonMobileScreens ? (
         <FlexBetween gap="2rem">
-          <IconButton onClick={() => dispatch(setMode)}>
+          <IconButton onClick={() => dispatch(setMode())}>
             {theme.palette.mode === "dark" ? (
               <DarkMode sx={{fontSize:"25px"}} />
             ) : <LightMode  sx={{color: dark, fontSize:"25px"}} />}
