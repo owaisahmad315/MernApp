@@ -122,6 +122,7 @@ const Navbar = () => {
       )}
 
       {/*MOBILE NAV */}
+
         {!isNonMobileScreens && isMobileMenuToggled &&(
           <Box
             position="fixed"
@@ -134,16 +135,19 @@ const Navbar = () => {
             backgroundColor={background}
           >
             {/*CLOSE ICON */}
-            <Box display="flex" justifyContent="flex-end" p="1rem">
+
+            <Box display="flex" justifyContent="flex-end" p="5rem">
               <IconButton
                 onClick={()=> setIsMobileMenuToggled(!isMobileMenuToggled)}
               >
                 <Close />
               </IconButton>
             </Box>
+
             {/*MENU ITEMS */}
+
             <FlexBetween display="flex" flexDirection="column" justifyContent="center" alignItems="center" gap="3rem">
-              <IconButton onClick={() => dispatch(setMode)}
+              <IconButton onClick={() => dispatch(setMode())}
                sx={{fontSize:"25px"}}>
                 {theme.palette.mode === "dark" ? (
                   <DarkMode sx={{fontSize:"25px"}} />
